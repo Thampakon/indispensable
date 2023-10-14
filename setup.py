@@ -1,29 +1,34 @@
-import json
-import sys
+import argparse
+import os
+import yaml
+
 
 def main():
-    if "-i" not in sys.argv or "--import" not in sys.argv:
-        print("Error: pls use --import or -i")
-        return
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--file", help="Path to the .yml file to be overwritten")
+    parser.add_argument("--authtoken", help="The authtoken to be used in the .yml file")
+    args = parser.parse_args()
 
-    # อ่านข้อมูลไฟล์ JSON ที่จะนำเข้า
-    import_file = sys.argv[sys.argv.index("-i", "--import") + 1]
-    with open(import_file, "r") as f:
-        import_data = json.load(f)
+    # Get the data to be written to the .yml file
+    data = {
+        "version": "2",
+        "authtoken": args.authtoken,
+        "tunnels": [
+            {
+                "addr": 80,
+                "proto": "http",
+            },
+            {
+                "addr": 3000,
+                "proto": "http",
+            },
+        ],
+    }
 
-    # ตรวจสอบว่ามีพารามิเตอร์ --fix หรือไม่
-    if "-f" not in sys.argv or "--fix" not in sys.argv:
-        print("Error:  pls use -f or --fix")
-        return
+    # Write the data to the .yml file
+    with open(args.file, "w") as f:
+        yaml.dump(data, f, default_flow_style=False)
 
-    # อ่านข้อมูลไฟล์ JSON ที่จะเขียนทับ
-    fix_file = sys.argv[sys.argv.index("-f", "--fix") + 1]
-    with open(fix_file, "r") as f:
-        fix_data = json.load(f)
-
-    # เขียนทับไฟล์ JSON เป้าหมาย
-    with open(fix_file, "w") as f:
-        json.dump(import_data, f)
 
 if __name__ == "__main__":
     main()
