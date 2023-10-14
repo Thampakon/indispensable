@@ -2,5 +2,3 @@
 su
 
 sqlmap --update
-
-rm update.sh
