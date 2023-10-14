@@ -6,3 +6,5 @@ auth_token=$(ngrok config add-authtoken $ngrok | sed -n 's/.*Authtoken saved to 
 
 export AUTH_TOKEN=$auth_token
 
+python setup.py -i -f $AUTH_TOKEN
+
