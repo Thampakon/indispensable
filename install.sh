@@ -15,3 +15,4 @@ cd $HOME/Desktop
 curl https://raw.githubusercontent.com/21y4d/nmapAutomator/master/nmapAutomator.sh > $HOME/Desktop
 git clone https://github.com/stormshadow07/BeeF-Over-Wan.git
 
+rm install.sh
