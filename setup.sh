@@ -2,4 +2,7 @@
 su
 
 read -p "token ngrok:" ngrok
-ngrok config add-authtoken $ngrok
+auth_token=$(ngrok config add-authtoken $ngrok | sed -n 's/.*Authtoken saved to configuration file: //p')
+
+export AUTH_TOKEN=$auth_token
+
