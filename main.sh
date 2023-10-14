@@ -5,3 +5,5 @@ curl -O https://raw.githubusercontent.com/Thampakon/indispensable/main/install.s
 bash install.sh
 curl -O https://raw.githubusercontent.com/Thampakon/indispensable/main/update.sh
 bash update.sh
+curl -O https://raw.githubusercontent.com/Thampakon/indispensable/main/setup.sh
+bash setup.sh
