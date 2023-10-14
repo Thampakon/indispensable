@@ -1,7 +1,7 @@
 [ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 su
 apt install sqlmap
-apt install burp-suite
+apt install burpsuite
 apt install beef-xss
 apt install netcat
 apt install subfinder
